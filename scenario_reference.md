@@ -1232,6 +1232,33 @@ replay:
 
 Replay requires a `recording` output to have been used during the original run.
 
+### Replay vs deterministic mode (`seed:`)
+
+Replay and `seed:` both answer "how do I get the same logs again?" but they are
+different tools for different problems.
+
+**Use replay when** you want to play back a fixed, previously captured stream — for
+example, feeding the same access log burst through a new version of your parser, or
+re-ingesting a recorded incident into a different backend.
+
+**Use `seed:` when** you need the scenario itself to be a reproducible artifact:
+
+- **CI fixtures** — a 20-line YAML file in git, not a 200 MB JSONL recording.
+- **Iterating on the scenario** — change a field, re-run, get a different-but-still-
+  reproducible stream. Replay locks you to one recording; every scenario edit requires
+  a new recording that is incomparable to the last.
+- **Sharing** — "run this YAML with seed 42" works for any colleague on any machine.
+  Sharing a recording means distributing a large binary file.
+- **Timestamps** — replayed records carry timestamps from when the recording was made.
+  `seed:` generates timestamps relative to the run start, which is correct for any
+  test that checks time-windowed alerting behavior.
+- **Internal simulation state** — recording captures output only. Health state
+  transitions, state variable values, and incident timing are not stored and cannot
+  be replayed; `seed:` reproduces all of it exactly.
+
+`seed:` requires [CodeRoast](https://coderoast.fr). The free CLI can record and
+replay but each new simulation run is uniquely randomized.
+
 ---
 
 ## Clock
