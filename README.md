@@ -1,23 +1,32 @@
-# LogCraft Scenario Library
+# LogCraft Playground
 
-A curated collection of production-ready scenario templates for [LogCraft](https://coderoast.fr/logcraft).
+Open LogCraft playground content for [LogCraft](https://coderoast.fr/logcraft): starter scenarios, reusable agents, and the source of the small CLI consumer used to run scenarios locally when `logcraft_core` is available.
 
 Explore realistic multi-agent log stream simulations — from simple microservices to complex distributed systems with chaos incidents, error cascading, and latency distributions.
 
-The scenario library is data, not engine code. LogCraft owns the scenario DSL reference in [../logcraft/technical_docs/reference/scenario_reference.md](../logcraft/technical_docs/reference/scenario_reference.md). Cross-repo status and compatibility live in [../technical_docs/README.md](../technical_docs/README.md) and [../technical_docs/ROADMAP.md](../technical_docs/ROADMAP.md).
+This package is intentionally source-visible. The CLI links against `logcraft_core`, which is a closed-source package, so users without that dependency can still read and change the CLI/scenario sources but cannot build the CLI binary from this repository alone. Cross-repo status and compatibility live in [../technical_docs/README.md](../technical_docs/README.md) and [../technical_docs/ROADMAP.md](../technical_docs/ROADMAP.md).
 
 **Use these scenarios as:**
 - Learning resources to understand LogCraft's capabilities
 - Templates to build your own simulations
 - Reference implementations for common architectures
-- Regression test suites for your observability stack
+- A playground CLI entry point when built inside the full CodeRoast workspace
 
 ## Key Paths
 
 | Path | Purpose |
 |---|---|
-| `scenario/` | LogCraft Playground starter scenario YAML. |
-| `insight_scenario/` | Insight Playground regression and real-life scenario YAML. |
-| `agents/` | Reusable agent definitions and templates. |
-| `insight_scenario/self_hosted/` | Scenarios that require local filesystem includes or registry support. |
+| `scenario/01_starter/` | LogCraft Playground starter scenario YAML. |
+| `scenario/agents/` | Reusable agent definitions and templates. |
+| `cli/` | Source for the LogCraft playground CLI consumer; links with `logcraft_core`. |
 | `scenario_reference.md` | Scenario DSL reference mirrored from LogCraft-facing docs. |
+
+## Build
+
+Inside the full CodeRoast workspace, use `malf` from this package root:
+
+```bash
+malf build .
+```
+
+The build requires `logcraft_core/1.3.3`. Scenario YAML remains editable and inspectable without that dependency.
