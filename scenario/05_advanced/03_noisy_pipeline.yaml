@@ -99,5 +99,6 @@ scenario:
       jitter_percent: 20.0
 
   outputs:
-    - type: console
+    - name: stream
+      type: console
       format: json

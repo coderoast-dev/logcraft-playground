@@ -1,5 +1,6 @@
 # Starter 04 — Multiple Outputs
-# Same logs routed to two HTTP endpoints simultaneously, each in a different format.
+# Same logs written to two files simultaneously, each in a different format.
+# In LogCraft Lab the file sinks are redirected to the UI's drain and labelled by name.
 # Concepts: multiple outputs, format per sink, independent write telemetry
 scenario:
   name: multiple-outputs
@@ -7,12 +8,12 @@ scenario:
 
   outputs:
     - name: log-aggregator
-      type: http
-      url: http://ingest.logcraft.demo/v1/logs
+      type: file
+      path: /tmp/logcraft_json.log
       format: json
     - name: siem-backend
-      type: http
-      url: http://siem.logcraft.demo/api/bulk
+      type: file
+      path: /tmp/logcraft_clf.log
       format: clf
 
   agents:

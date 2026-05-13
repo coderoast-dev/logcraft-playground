@@ -36,21 +36,25 @@ scenario:
 
   outputs:
     # ts=2026-01-15T10:23:45Z level=info service=app-server msg="..."
-    - type: file
+    - name: kv-log
+      type: file
       path: /tmp/logcraft_kv.log
       format: kv
 
     # Jan 15 10:23:45 hostname app-server[1234]: message
-    - type: file
+    - name: syslog-out
+      type: file
       path: /tmp/logcraft_syslog.log
       format: syslog
 
     # <14>1 2026-01-15T10:23:45Z host app-server 1234 - - message
-    - type: file
+    - name: rfc5424-out
+      type: file
       path: /tmp/logcraft_rfc5424.log
       format: rfc5424
 
     # 2026-01-15 10:23:45,123 INFO [main] com.example.AppServer: message
-    - type: file
+    - name: log4j-out
+      type: file
       path: /tmp/logcraft_log4j.log
       format: log4j

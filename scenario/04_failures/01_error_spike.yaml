@@ -80,5 +80,6 @@ scenario:
           integer: true
 
   outputs:
-    - type: console
+    - name: stream
+      type: console
       format: json

@@ -5,6 +5,11 @@ scenario:
   name: two-agents
   duration: 2m
 
+  outputs:
+    - name: console
+      type: console
+      format: json
+
   agents:
     - name: web-server
       type: web_server

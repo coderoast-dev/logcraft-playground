@@ -150,5 +150,6 @@ scenario:
           values: [user_session, order_cache, product_price]
 
   outputs:
-    - type: console
+    - name: stream
+      type: console
       format: json

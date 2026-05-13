@@ -1,22 +1,23 @@
-# Starter 06 — Multiple HTTP Sinks
-# Same logs routed to three HTTP endpoints simultaneously, each in a different format.
-# Concepts: http sink, multiple outputs, format per sink, backlog, error tracking
+# Starter 06 — Multiple Formats
+# Same logs written to three files simultaneously, each in a different format.
+# In LogCraft Lab the file sinks are redirected to the UI's drain and labelled by name.
+# Concepts: file sinks, multiple outputs, format per sink (json, ecs, kv)
 scenario:
-  name: http-sinks
+  name: multiple-formats
   duration: 2m
 
   outputs:
     - name: log-aggregator
-      type: http
-      url: http://ingest.logcraft.demo/v1/logs
+      type: file
+      path: /tmp/logcraft_json.log
       format: json
     - name: alert-webhook
-      type: http
-      url: http://alerts.logcraft.demo/webhooks/logs
+      type: file
+      path: /tmp/logcraft_ecs.log
       format: ecs
     - name: siem-backend
-      type: http
-      url: http://siem.logcraft.demo/api/bulk
+      type: file
+      path: /tmp/logcraft_kv.log
       format: kv
 
   agents:

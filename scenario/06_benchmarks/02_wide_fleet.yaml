@@ -65,5 +65,6 @@ scenario:
           values: [events, metrics, logs, users]
 
   outputs:
-    - type: console
+    - name: stream
+      type: console
       format: json

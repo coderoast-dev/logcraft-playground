@@ -59,5 +59,6 @@ scenario:
           weights: [30, 60, 5, 5]
 
   outputs:
-    - type: console
+    - name: stream
+      type: console
       format: json

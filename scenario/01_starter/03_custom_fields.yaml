@@ -5,6 +5,11 @@ scenario:
   name: custom-fields
   duration: 2m
 
+  outputs:
+    - name: console
+      type: console
+      format: json
+
   agents:
     - name: api-gateway
       type: web_server

@@ -5,6 +5,11 @@ scenario:
   name: hello-logcraft
   duration: 2m
 
+  outputs:
+    - name: console
+      type: console
+      format: json
+
   agents:
     - name: app
       type: web_server

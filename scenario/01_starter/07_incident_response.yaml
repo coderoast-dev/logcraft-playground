@@ -5,6 +5,11 @@ scenario:
   name: incident-response
   duration: 5m
 
+  outputs:
+    - name: console
+      type: console
+      format: json
+
   templates:
     api_service:
       rate: 5/s

@@ -5,6 +5,11 @@ scenario:
   name: phases-demo
   duration: 5m
 
+  outputs:
+    - name: console
+      type: console
+      format: json
+
   agents:
     - name: api-server
       type: web_server
